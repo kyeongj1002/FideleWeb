@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<FideleWeb.Models.Member>
+
+@{
+    ViewData["Title"] = "청년회 명부";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">🕊️ 청년회 회원 목록</h1>
+    <p>서버(DB)에서 실시간으로 가져온 명단입니다.</p>
 </div>
+
+<table class="table table-bordered table-hover mt-4">
+    <thead class="table-dark">
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>세례명</th>
+            <th>전화번호</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.MemberId</td>
+                <td>@member.Name</td>
+                <td>@member.BaptismalName</td>
+                <td>@member.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>
